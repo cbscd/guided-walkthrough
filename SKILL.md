@@ -48,9 +48,18 @@ does not apply.
    `/branch` is a command the user types; you cannot run it for them.
 
 3. **Run the walkthrough (in the branch).** Present ONE step at a time. After
-   each step, pause with the `AskUserQuestion` tool: offer "Done, next step" and
-   "Something went wrong / I have a question", and let the tool's "Other" field
-   carry free-form detail. Do NOT advance until the user confirms.
+   each step, pause with the `AskUserQuestion` tool. Do NOT advance until the
+   user confirms. Structure the options as follows:
+
+   - **If the step involves a shell command:** make the first option "Run this in
+     the session shell" (or similar). When the user selects it: copy the command
+     to the clipboard via `pbcopy` (without the `!` prefix — the user types `!`
+     themselves before pasting) and tell them to paste it with `!` in the Claude
+     Code prompt. Then re-ask the same step question with options "Done, next
+     step" and "Something went wrong / I have a question" so they can confirm
+     once the command completes.
+   - **Always include:** "Done, next step" and "Something went wrong / I have a
+     question". Let the tool's "Other" field carry free-form detail.
 
 4. **Return to the parent.** On "close this session", "return to the main
    session", "exit the walkthrough", or similar: stop, then
