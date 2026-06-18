@@ -1,0 +1,19 @@
+[
+  { "query": "walk me through installing Postgres on my machine step by step", "should_trigger": true },
+  { "query": "guide me through setting up the AWS CLI and pause between each step", "should_trigger": true },
+  { "query": "help me configure my Stripe account, I have to do it by hand on their site", "should_trigger": true },
+  { "query": "I need to set up Docker Desktop myself, can you guide me one step at a time", "should_trigger": true },
+  { "query": "set this up with me, I'll run the commands on my end as we go", "should_trigger": true },
+  { "query": "walk me through the browser OAuth login for this API", "should_trigger": true },
+  { "query": "I have to install Homebrew and a few tools manually, guide me through it", "should_trigger": true },
+  { "query": "run the guided walkthrough for setting up my dev environment", "should_trigger": true },
+
+  { "query": "install the npm dependencies for this project", "should_trigger": false },
+  { "query": "configure eslint and prettier in this repo", "should_trigger": false },
+  { "query": "walk me through how this authentication module works", "should_trigger": false },
+  { "query": "explain step by step what this function does", "should_trigger": false },
+  { "query": "refactor this file step by step", "should_trigger": false },
+  { "query": "fix the failing test in the build", "should_trigger": false },
+  { "query": "write a README section on how to install the app", "should_trigger": false },
+  { "query": "set up a new React component for the dashboard", "should_trigger": false }
+]
