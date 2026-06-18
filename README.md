@@ -1,6 +1,6 @@
-# guided-walkthrough
+[![skills.sh](https://skills.sh/b/cbscd/guided-walkthrough)](https://skills.sh/cbscd/guided-walkthrough)
 
-[![skills.sh](https://img.shields.io/badge/skills.sh-guided--walkthrough-blue)](https://skills.sh/cbscd/guided-walkthrough)
+# guided-walkthrough
 
 ```bash
 npx skills add cbscd/guided-walkthrough
