@@ -1,6 +1,10 @@
-[![skills.sh](https://skills.sh/b/cbscd/guided-walkthrough)](https://skills.sh/cbscd/guided-walkthrough)
-
 # guided-walkthrough
+
+[![skills.sh](https://img.shields.io/badge/skills.sh-guided--walkthrough-blue)](https://skills.sh/cbscd/guided-walkthrough)
+
+```bash
+npx skills add cbscd/guided-walkthrough
+```
 
 A shareable Claude Code skill that walks a user step-by-step through **manual
 setup done outside the session** (installs, logins, interactive CLIs, GUI
