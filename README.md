@@ -17,9 +17,11 @@ parent's resume command surfaced so the user can return.
 
 Type `/guided-walkthrough` to invoke it explicitly.
 
-**For automatic triggering**, add this line to your `CLAUDE.md`:
+**For automatic triggering**, copy-paste the following to your `CLAUDE.md`:
 
-> `- For tasks needing manual steps outside the session, use the guided-walkthrough skill.`
+```
+- For tasks needing manual steps outside the session, use the guided-walkthrough skill.
+```
 
 Without it, the skill only fires on near-verbatim phrasings like "run the guided
 walkthrough". With it, Claude picks it up reliably for any install, login, or
