@@ -31,6 +31,12 @@ manual configuration request.
 
 macOS. Uses `pbcopy`, and the `/branch` and `/resume` commands from Claude Code.
 
+For a personal install available across all projects, run the command from your home directory:
+
+```bash
+cd ~ && npx skills add cbscd/guided-walkthrough
+```
+
 ## Test
 
 ```bash
