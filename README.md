@@ -7,7 +7,7 @@
 npx skills add cbscd/guided-walkthrough
 ```
 
-A shareable Claude Code skill that walks a user step-by-step through **manual
+Claude Code skill that walks a user step-by-step through **manual
 setup done outside the session** (installs, logins, interactive CLIs, GUI
 clicks). It runs the walkthrough in a dedicated `/branch`, pauses after each step
 with `AskUserQuestion`, and hands a summary back to the parent session, with the
