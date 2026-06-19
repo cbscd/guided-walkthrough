@@ -29,33 +29,19 @@ import sys
 from pathlib import Path
 
 PROMPT_TEMPLATE = """\
-You are running a GUIDED MANUAL-STEPS WALKTHROUGH in a branch.
+You are in a guided-walkthrough branch. Use the Skill tool to invoke the \
+`guided-walkthrough` skill now — it contains the full walkthrough instructions.
 
-When this walkthrough ends, return me to the parent session. Show BOTH lines
-(separately, on screen; do NOT copy them to the clipboard):
+You are ALREADY in the branch: skip any step that says to branch or create a \
+new session. Go straight to running the walkthrough for the task below.
+
+Parent session (show these at the end, on screen only, never in the clipboard):
   /resume {session_id}
   claude --resume {session_id}
 
 Task: {title}
 Steps:
 {numbered_steps}
-
-Rules:
-- Present ONE step at a time.
-- After each step, pause with the AskUserQuestion tool:
-  - If the step involves a shell command: make the FIRST option "Run this in the
-    session shell". When selected, copy the command (without the ! prefix) to the
-    clipboard via pbcopy and tell me to type ! and paste it in the Claude Code prompt.
-    Then re-ask with "Done, next step" and "Something went wrong / I have a question"
-    so I can confirm once it completes.
-  - Always include "Done, next step" and "Something went wrong / I have a question".
-  - Let the "Other" field carry free-form detail.
-- Do NOT advance until I confirm.
-- On "close this session" / "return to the main session": stop; write a short summary
-  (steps completed, skipped/failed, any values/paths produced); show it inline AND copy
-  the summary ONLY to the clipboard with pbcopy; then show the two resume lines above.
-- First thing: confirm you can run `pbcopy` here by copying the text "branch-pbcopy-ok"
-  to the clipboard, then begin step 1.
 """
 
 

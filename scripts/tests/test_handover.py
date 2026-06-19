@@ -73,11 +73,11 @@ class TestBuildPrompt(unittest.TestCase):
         self.assertIn("1. first", p)
         self.assertIn("2. second", p)
 
-    def test_includes_pause_and_exit_rules(self):
+    def test_instructs_skill_load_and_branch_context(self):
         p = handover.build_handover_prompt("id", "T", ["s"])
-        self.assertIn("AskUserQuestion", p)
-        self.assertIn("ONE step at a time", p)
-        self.assertIn("return to the main session", p)
+        self.assertIn("guided-walkthrough", p)
+        self.assertIn("already in the branch", p.lower())
+        self.assertIn("Skill tool", p)
 
 
 if __name__ == "__main__":

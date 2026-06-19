@@ -20,6 +20,12 @@ When a task needs the user to do things by hand outside Claude Code, do not dump
 the whole list and move on. Run a paced, branch-isolated walkthrough that pauses
 after each step and returns a summary to the parent session.
 
+## If you are already in a branch
+
+If the prompt that loaded this skill says "you are already in a branch", skip
+steps 1 and 2 below entirely. The parent session id and task steps are already
+in the prompt — go straight to step 3 (run the walkthrough).
+
 ## When this applies
 
 Any step the user performs away from the session: `brew install`, account
