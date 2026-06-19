@@ -42,8 +42,14 @@ Steps:
 
 Rules:
 - Present ONE step at a time.
-- After each step, pause with the AskUserQuestion tool: offer "Done, next step",
-  "Something went wrong / I have a question", and let "Other" carry free-form detail.
+- After each step, pause with the AskUserQuestion tool:
+  - If the step involves a shell command: make the FIRST option "Run this in the
+    session shell". When selected, copy the command (without the ! prefix) to the
+    clipboard via pbcopy and tell me to type ! and paste it in the Claude Code prompt.
+    Then re-ask with "Done, next step" and "Something went wrong / I have a question"
+    so I can confirm once it completes.
+  - Always include "Done, next step" and "Something went wrong / I have a question".
+  - Let the "Other" field carry free-form detail.
 - Do NOT advance until I confirm.
 - On "close this session" / "return to the main session": stop; write a short summary
   (steps completed, skipped/failed, any values/paths produced); show it inline AND copy
