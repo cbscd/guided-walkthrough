@@ -57,13 +57,15 @@ does not apply.
    each step, pause with the `AskUserQuestion` tool. Do NOT advance until the
    user confirms. Structure the options as follows:
 
-   - **If the step involves a shell command:** make the first option "Run this in
-     the session shell" (or similar). When the user selects it: copy the command
-     to the clipboard via `pbcopy` (without the `!` prefix — the user types `!`
-     themselves before pasting) and tell them to paste it with `!` in the Claude
-     Code prompt. Then re-ask the same step question with options "Done, next
-     step" and "Something went wrong / I have a question" so they can confirm
-     once the command completes.
+   - **If the step involves a shell command:** offer three options: "Run in
+     session shell (copies command to clipboard)", "Done, next step", and
+     "Something went wrong / I have a question". When the user selects "Run in
+     session shell": copy the command to the clipboard via `pbcopy` (without the
+     `!` prefix — the user types `! ` then pastes), confirm the copy on screen,
+     then immediately call `AskUserQuestion` again with ONLY "Done, next step"
+     and "Something went wrong / I have a question". Selecting "Run in session
+     shell" must NEVER itself advance to the next step — advancement only happens
+     when the user explicitly selects "Done, next step".
    - **Always include:** "Done, next step" and "Something went wrong / I have a
      question". Let the tool's "Other" field carry free-form detail.
 
