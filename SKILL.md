@@ -57,16 +57,18 @@ does not apply.
    each step, pause with the `AskUserQuestion` tool. Do NOT advance until the
    user confirms. Structure the options as follows:
 
-   - **If the step involves a shell command:** run it automatically with your
-     Bash tool, unless it is inherently interactive (requires user input mid-run,
-     opens a browser, launches a TUI, or otherwise cannot be driven
-     non-interactively). For interactive commands, copy the command to the
-     clipboard via `pbcopy` (without the `!` prefix), tell the user to run it
-     manually with `! <paste>` in the Claude Code prompt, and explain briefly
-     why it needs to be run manually. For non-interactive commands, run them
-     yourself and show the output. In both cases, follow up with `AskUserQuestion`
-     offering "Done, next step" and "Something went wrong / I have a question"
-     before advancing.
+   - **If the step involves a shell command:** determine first whether it is
+     inherently interactive (requires user input mid-run, opens a browser,
+     launches a TUI, or otherwise cannot be driven non-interactively).
+     - **Non-interactive:** run it with your Bash tool, read the output, and
+       advance automatically on success. On failure, diagnose and fix before
+       advancing — do not ask the user to intervene unless you are genuinely
+       blocked.
+     - **Interactive:** copy the command to the clipboard via `pbcopy` (without
+       the `!` prefix), tell the user to run it manually with `! <paste>` in the
+       Claude Code prompt, and explain briefly why it needs manual execution.
+       Then ask `AskUserQuestion` with "Done, next step" and "Something went
+       wrong / I have a question" before advancing.
    - **Always include:** "Done, next step" and "Something went wrong / I have a
      question". Let the tool's "Other" field carry free-form detail.
 
