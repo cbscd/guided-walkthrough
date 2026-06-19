@@ -58,13 +58,15 @@ does not apply.
    user confirms. Structure the options as follows:
 
    - **If the step involves a shell command:** run it automatically with your
-     Bash tool. If it succeeds, show the output and ask `AskUserQuestion` with
-     "Done, next step" and "Something went wrong / I have a question". If it
-     fails, copy the command to the clipboard via `pbcopy` (without the `!`
-     prefix), tell the user to run it manually with `! <paste>` in the Claude
-     Code prompt, then ask `AskUserQuestion` with "Done, next step" and
-     "Something went wrong / I have a question". Do NOT offer "Run in session
-     shell" as an upfront option — only fall back to it on failure.
+     Bash tool, unless it is inherently interactive (requires user input mid-run,
+     opens a browser, launches a TUI, or otherwise cannot be driven
+     non-interactively). For interactive commands, copy the command to the
+     clipboard via `pbcopy` (without the `!` prefix), tell the user to run it
+     manually with `! <paste>` in the Claude Code prompt, and explain briefly
+     why it needs to be run manually. For non-interactive commands, run them
+     yourself and show the output. In both cases, follow up with `AskUserQuestion`
+     offering "Done, next step" and "Something went wrong / I have a question"
+     before advancing.
    - **Always include:** "Done, next step" and "Something went wrong / I have a
      question". Let the tool's "Other" field carry free-form detail.
 
